@@ -1,0 +1,41 @@
+// A system's games: the selected game's box at the left in a frame, the list at the right in
+// framed rows, the console bands around.
+{
+  "views": {
+    "gamelist/basic": { "id": "basic", "style": { "width": "100%", "height": "100%" }, "children": [
+      { "use": "bg" },
+      { "type": "box", "id": "boxFrame",
+        "style": { "position": "absolute", "left": "4.5vw", "top": "15vh", "width": "30vw", "height": "67vh", "padding": "1.2vmin",
+                   "background": "$color.cardSel", "borderRadius": "1.6vmin", "justifyContent": "center", "alignItems": "center" },
+        "children": [
+          { "type": "box", "id": "boxInner",
+            "style": { "width": "100%", "height": "100%", "background": "$color.card", "borderRadius": "1vmin", "padding": "1.4vmin",
+                       "justifyContent": "center", "alignItems": "center" },
+            "children": [
+              { "type": "image", "id": "boxart", "src": "{firstFile(game.thumbnail, game.image)}", "fit": "contain",
+                "style": { "width": "100%", "height": "100%" } },
+              { "type": "image", "id": "noBox", "src": "art/devices/{system.theme}.png", "fit": "contain",
+                "style": { "position": "absolute", "left": "15%", "top": "15%", "width": "70%", "height": "70%",
+                           "display": "{firstFile(game.thumbnail, game.image) == \"\" ? \"flex\" : \"none\"}" } }
+            ] }
+        ] },
+      { "type": "repeat", "id": "games", "source": "games", "cursor": { "scroll": "row" },
+        "style": { "position": "absolute", "left": "38vw", "top": "15vh", "width": "57.5vw", "height": "67vh",
+                   "flexDirection": "column", "overflow": "hidden" },
+        "template": { "type": "box", "id": "row",
+          "style": { "width": "100%", "height": "9.5vh", "flexShrink": 0, "padding": ["0.6vh", 0, "0.6vh", 0] },
+          "children": [
+            { "type": "box", "id": "slot",
+              "style": { "width": "100%", "height": "100%", "justifyContent": "center", "padding": [0, "1.4vw", 0, "1.4vw"],
+                         "background": "$color.hint", "borderRadius": "1vmin" },
+              "states": { "selected": { "style": { "background": "$color.badge" } } },
+              "children": [
+                { "type": "text", "id": "name", "text": "{upper(item.name)}", "font": "$font.main", "fontSize": "$text.size", "ellipsis": true,
+                  "style": { "color": "$color.dim" },
+                  "states": { "selected": { "style": { "color": "#ffffff" } } } } ] }
+          ] } },
+      { "use": "bandTop" },
+      { "use": "bandBottom" }
+    ] }
+  }
+}

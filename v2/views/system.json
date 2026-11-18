@@ -1,0 +1,57 @@
+// The systems: a row of cards that loops, the centred one lifted and framed.
+{
+  "views": {
+    "system": { "id": "system", "style": { "width": "100%", "height": "100%" }, "children": [
+      { "use": "bg" },
+      { "type": "repeat", "id": "cards", "source": "systems",
+        "cursor": { "loop": true, "axis": "horizontal", "window": 7, "duration": 300, "easing": "easeOutQuint" },
+        "style": { "position": "absolute", "left": 0, "top": "$band.top", "width": "100%", "height": "{screen.h * 0.79}", "overflow": "hidden" },
+        "template": { "type": "box", "id": "card",
+          "style": { "position": "absolute", "left": "{50 + item.distance * (screen.w / screen.h < 1.5 ? 26 : 19.5)}%", "top": "44%",
+                     "width": "{screen.w * (screen.w / screen.h < 1.5 ? 0.24 : 0.18)}", "aspectRatio": 0.87,
+                     "translate": ["-50%", "-50%"], "padding": "0.5vmin", "borderRadius": "2.4vmin",
+                     "scale": "{1 + 0.12 * max(0, 1 - abs(item.distance))}",
+                     "opacity": "{1 - 0.42 * min(1, abs(item.distance))}" },
+          "states": { "selected": { "style": { "background": "$color.cardEdge" } } },
+          "children": [
+            { "type": "box", "id": "face",
+              "style": { "width": "100%", "height": "100%", "flexDirection": "column", "padding": ["1.4vmin", "1.4vmin", "1vmin", "1.4vmin"],
+                         "background": "$color.card", "borderRadius": "2vmin" },
+              "states": { "selected": { "style": { "background": "$color.cardSel" } } },
+              "children": [
+                { "type": "box", "id": "logoArea", "style": { "height": "21%", "flexShrink": 0, "justifyContent": "center", "alignItems": "center" },
+                  "children": [
+                    { "type": "image", "id": "logo", "src": "art/logos/{item.theme}.svg", "fit": "contain", "tint": "$color.cardLogo",
+                      "style": { "width": "100%", "height": "100%",
+                                 "display": "{exists(\"$(themeDir)/art/logos/\" + item.theme + \".svg\") ? \"flex\" : \"none\"}" },
+                      "states": { "selected": { "style": { "tint": "$color.cardLogoSel" } } } },
+                    { "type": "text", "id": "logoText", "text": "{item.fullName}", "font": "$font.main", "fontSize": "2.6vh", "align": "center", "valign": "center", "ellipsis": true,
+                      "style": { "width": "100%", "height": "100%", "color": "$color.cardLogo",
+                                 "display": "{exists(\"$(themeDir)/art/logos/\" + item.theme + \".svg\") ? \"none\" : \"flex\"}" } }
+                  ] },
+                { "type": "box", "id": "art",
+                  "style": { "flexGrow": 1, "flexBasis": 0, "minHeight": 0, "overflow": "hidden", "margin": ["0.8vmin", 0, "0.8vmin", 0],
+                             "background": "$color.cardArt", "borderRadius": "1.4vmin", "justifyContent": "center", "alignItems": "center" },
+                  "states": { "selected": { "style": { "background": "$color.cardArtSel" } } },
+                  "children": [
+                    { "type": "image", "id": "device", "src": "art/devices/{item.theme}.png", "fit": "contain",
+                      "style": { "position": "absolute", "left": "6%", "top": "6%", "width": "88%", "height": "88%" } } ] },
+                { "type": "box", "id": "footer", "style": { "height": "12%", "flexShrink": 0, "flexDirection": "row", "alignItems": "center" },
+                  "children": [
+                    { "type": "text", "id": "maker", "text": "{item.manufacturer}", "font": "$font.main", "fontSize": "2.1vh", "ellipsis": true,
+                      "style": { "flexGrow": 1, "flexShrink": 1, "minWidth": 0, "color": "$color.cardText" } },
+                    { "type": "box", "id": "year",
+                      "style": { "background": "$color.cardText", "borderRadius": "0.8vmin", "padding": [0, "0.6vw", 0, "0.6vw"],
+                                 "display": "{item.releaseYear != \"\" ? \"flex\" : \"none\"}" },
+                      "states": { "selected": { "style": { "background": "$color.badge" } } },
+                      "children": [
+                        { "type": "text", "id": "yearText", "text": "{item.releaseYear}", "font": "$font.main", "fontSize": "2.5vh",
+                          "style": { "color": "#ffffff" } } ] }
+                  ] }
+              ] }
+          ] } },
+      { "use": "bandTop" },
+      { "use": "bandBottom" }
+    ] }
+  }
+}

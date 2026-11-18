@@ -1,0 +1,12 @@
+// Mini: a mini-console style theme for TV screens (640x480 .. 1920x1080). Written in v2
+// (REG-Station docs/arch/THEME-V2-FORMAT.md). Art: tools/gen_assets.py, from Canvas (CC BY-NC-SA).
+{
+  "format": "reg-theme/2",
+  "name": "Mini",
+  "options": {
+    "skin": { "label": "Skin", "values": ["purple", "black", "green", "grey"], "default": "purple" }
+  },
+  "include": ["vars.json", "components.json", "mini.json",
+              "views/system.json", "views/gamelist/basic.json",
+              "views/menu.json", "views/dialog.json", "views/screen.json"]
+}

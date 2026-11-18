@@ -1,0 +1,33 @@
+// The look by name. A skin changes the colours only.
+{
+  "vars": {
+    "color.bg":       { "by": "skin", "purple": "#3a1466", "black": "#141418", "green": "#24502a", "grey": "#4a4c56" },
+    "color.band":     "#cfcfd3",
+    "color.bandEdge": "#96969c",
+    "color.bandText": "#5a5a62",
+    "color.accent":   { "by": "skin", "purple": "#22286e", "black": "#b01c24", "green": "#2a5a22", "grey": "#22286e" },
+    "color.badge":    { "by": "skin", "purple": "#1e3ca0", "black": "#b01c24", "green": "#3a7a2a", "grey": "#1e3ca0" },
+    "color.card":     "#d6d6da",
+    "color.cardSel":  "#fafafa",
+    "color.cardEdge": "#14141a",
+    "color.cardArt":  "#adaeb6",
+    "color.cardArtSel": "#9698a0",
+    "color.cardText": "#5a5a62",
+    "color.cardLogo": "#46485a",
+    "color.cardLogoSel": "#22286e",
+    "color.text":     "#ffffff",
+    "color.dim":      "#c8c8d0",
+    "color.pill":     "#fafafa",
+    "color.pillText": "#14141a",
+    "color.hint":     "#00000060",
+    "color.panel":    "#1c1c22",
+    "color.dimLayer": "#000000b0",
+    "font.main": ":/Rubik-Regular.ttf",
+    "band.top": "9vh",
+    "band.bottom": "12vh",
+    "row.h": "8vh",
+    "text.size": "4.2vh",
+    "small.size": "2.8vh",
+    "edge": "3vw"
+  }
+}

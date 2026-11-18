@@ -1,0 +1,8 @@
+// What the frontend reads of the theme besides drawing it: its views, the slide between them.
+{
+  "facts": {
+    "theme|version": "7",
+    "theme|defaultTransition": "slide",
+    "theme|views": "system\nscreen\nbasic\nmenu"
+  }
+}

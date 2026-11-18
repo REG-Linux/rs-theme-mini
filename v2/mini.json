@@ -1,0 +1,33 @@
+// Mini's own nodes: the console bands (top: the help, bottom: the system's logo) and a system card.
+{
+  "defs": {
+    "bandTop": { "type": "box", "id": "bandTop",
+      "style": { "position": "absolute", "left": 0, "top": 0, "width": "100%", "height": "$band.top", "background": "$color.band", "zIndex": 50 },
+      "children": [
+        { "type": "box", "id": "bandTopEdge", "style": { "position": "absolute", "left": 0, "bottom": 0, "width": "100%", "height": "0.6vh", "background": "$color.bandEdge" } },
+        { "use": "help",
+          "style": { "position": "absolute", "left": "50%", "right": null, "top": 0, "bottom": null, "height": "8.4vh", "translate": ["-50%", 0] },
+          "template": { "type": "box", "id": "hint",
+            "style": { "flexDirection": "column", "alignItems": "center", "justifyContent": "center", "margin": [0, "1.6vw", 0, "1.6vw"] },
+            "children": [
+              { "type": "image", "id": "key", "src": "{item.icon}", "fit": "contain", "tint": "$color.bandText", "style": { "height": "3vh" } },
+              { "type": "text", "id": "label", "text": "{upper(item.label)}", "font": "$font.main", "fontSize": "2.2vh",
+                "style": { "color": "$color.bandText", "margin": ["0.4vh", 0, 0, 0] } }
+            ] } }
+      ] },
+
+    "bandBottom": { "type": "box", "id": "bandBottom",
+      "style": { "position": "absolute", "left": 0, "bottom": 0, "width": "100%", "height": "$band.bottom", "background": "$color.band", "zIndex": 50 },
+      "children": [
+        { "type": "box", "id": "bandBottomEdge", "style": { "position": "absolute", "left": 0, "top": 0, "width": "100%", "height": "0.6vh", "background": "$color.bandEdge" } },
+        { "type": "image", "id": "bandLogo", "src": "art/logos/{system.theme}.svg", "fit": "contain", "position": ["0%", "50%"], "tint": "$color.accent",
+          "style": { "position": "absolute", "left": "4.5vw", "top": "2.5vh", "width": "40vw", "height": "7.5vh",
+                     "display": "{exists(\"$(themeDir)/art/logos/\" + system.theme + \".svg\") ? \"flex\" : \"none\"}" } },
+        { "type": "text", "id": "bandName", "text": "{upper(system.fullName)}", "font": "$font.main", "fontSize": "5vh", "valign": "center", "ellipsis": true,
+          "style": { "position": "absolute", "left": "4.5vw", "top": "1vh", "width": "60vw", "height": "11vh", "color": "$color.accent",
+                     "display": "{exists(\"$(themeDir)/art/logos/\" + system.theme + \".svg\") ? \"none\" : \"flex\"}" } },
+        { "type": "box", "id": "led", "style": { "position": "absolute", "right": "7.5vw", "top": "5.2vh", "width": "3.2vw", "height": "1.6vh",
+                                                  "background": "#e6566e", "borderRadius": "50%" } }
+      ] }
+  }
+}
